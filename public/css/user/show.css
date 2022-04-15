@@ -1,0 +1,84 @@
+main{
+    display: flex;
+    padding: 100px 20%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10%;
+}
+
+#side-bar ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#side-bar li{
+    display: inline;
+}
+
+#side-bar li a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+#side-bar li:last-child{
+    margin-top: 50px;
+}
+#side-bar li:last-child a{
+    background-color: #e56561;
+    color: #fff;
+}
+
+#side-bar .active{
+    background-color: #414141;
+    color: #fff;
+}
+
+.active img > path{
+    color: #fff;
+}
+
+#main-content{
+    flex: 1;
+}
+
+#informations-personnelles,#securite{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#user_information,#form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#user_information > div,#form > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#user_information input, #form input{
+    padding: 15px 10px;
+    border: 1px solid #414141;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+form button{
+    margin-top: 30px;
+}

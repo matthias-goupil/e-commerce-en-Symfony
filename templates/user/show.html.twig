@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset("css/user/show.css") }}">{% endblock %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+
+    <nav id="side-bar">
+        <ul>
+            <li><a class="active" href="{{ path("app_user_show",{
+                    id: user.id
+                }) }}"><img alt="" src="{{ asset("img/icons/userWhite.svg") }}"> Mon compte</a></li>
+            <li><a class="" href="#"><img alt="" src="{{ asset("img/icons/cart.svg") }}"> Mon panier</a></li>
+            <li><a class="" href="#"><img alt="" src="{{ asset("img/icons/box.svg") }}"> Mes commandes</a></li>
+            <li><a class="" href="{{ path("app_logout") }}"><img alt="" src="{{ asset("img/icons/logout.svg") }}"> Déconnexion</a></li>
+        </ul>
+    </nav>
+    <section id="main-content">
+        <h2 class="title">Mon compte</h2>
+        <div id="informations-personnelles">
+            <h3>Informations personelles</h3>
+            {{ render(controller("App\\Controller\\UserController::edit",{
+                id: user.id
+            })) }}
+        </div>
+
+        <div id="securite">
+            <h3>Sécurité du compte</h3>
+            {{ render(controller("App\\Controller\\UserController::changePassword",{
+                id: user.id
+            })) }}
+        </div>
+
+{#        <div id="suprimer">#}
+{#            <h3>Supprimer le compte</h3>#}
+{#            {{ include('user/_delete_form.html.twig') }}#}
+
+{#        </div>#}
+
+
+
+
+    </section>
+
+{#    <a href="{{ path('app_user_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>#}
+
+{% endblock %}
