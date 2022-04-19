@@ -23,7 +23,11 @@
             <nav>
                 {% if app.user %}
                     <ul>
-                        <li><a href="{{ path("app_logout") }}">Déconnexion</a></li>
+                        <li><a href="{{ path("app_product_index") }}">Les Produits</a></li>
+
+                        <li><a href="{{ path("app_user_show",{
+                                id: app.user.id
+                            }) }}">Mon compte</a></li>
                     </ul>
                 {% else %}
                     <ul>

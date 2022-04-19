@@ -23,14 +23,14 @@ class UserInformationType extends AbstractType
                 ]
             ])
             ->add('firstname',TextType::class,[
-                "label" => "Nom",
+                "label" => "Prénom",
                 "required" => false,
                 "attr" => [
                     "placeholder" => "Pas renseigné"
                 ]
             ])
             ->add('lastname',TextType::class,[
-                "label" => "Prénom",
+                "label" => "Nom",
                 "required" => false,
                 "attr" => [
                     "placeholder" => "Pas renseigné"

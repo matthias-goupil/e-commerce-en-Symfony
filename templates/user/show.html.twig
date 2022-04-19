@@ -10,7 +10,9 @@
             <li><a class="active" href="{{ path("app_user_show",{
                     id: user.id
                 }) }}"><img alt="" src="{{ asset("img/icons/userWhite.svg") }}"> Mon compte</a></li>
-            <li><a class="" href="#"><img alt="" src="{{ asset("img/icons/cart.svg") }}"> Mon panier</a></li>
+            <li><a class="" href="{{ path("app_cart_show",{
+                    id: user.id
+                }) }}"><img alt="" src="{{ asset("img/icons/cart.svg") }}"> Mon panier</a></li>
             <li><a class="" href="#"><img alt="" src="{{ asset("img/icons/box.svg") }}"> Mes commandes</a></li>
             <li><a class="" href="{{ path("app_logout") }}"><img alt="" src="{{ asset("img/icons/logout.svg") }}"> Déconnexion</a></li>
         </ul>
@@ -36,9 +38,6 @@
 {#            {{ include('user/_delete_form.html.twig') }}#}
 
 {#        </div>#}
-
-
-
 
     </section>
 

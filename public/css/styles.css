@@ -43,10 +43,15 @@ main{
 
 .title{
     font-size: 1.5em;
+    margin-bottom: 20px;
 }
 
 .btn {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     padding: 10px 15px;
     background-color: #414141;
     color: #fff;

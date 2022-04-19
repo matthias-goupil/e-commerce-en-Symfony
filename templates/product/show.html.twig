@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset("css/product/show.css") }}">{% endblock %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <div>
+        <section id="image-produit">
+            <img alt="image du produit" src="{{ asset(product.image) }}">
+        </section>
+        <section id="main-content">
+            <h2 id="name">{{ product.name }}</h2>
+            <p id="description">{{ product.description }}</p>
+            <div id="buttons">
+                <p id="price">{{ product.price }} €</p>
+                <a class="btn" href="{{ path("app_cart_add_product",{
+                    idUser: app.user.id,
+                    idProduct: product.id
+                }) }}"><img src="{{ asset("img/icons/addToCart.svg") }}" alt=""> Ajouter au panier</a>
+            </div>
+{#            <a href="{{ path('app_product_index') }}">back to list</a>#}
+
+{#            <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>#}
+
+{#            {{ include('product/_delete_form.html.twig') }}#}
+        </section>
+    </div>
+
+    <section id="commentaires">
+        <h2>Avis</h2>
+        <div id="Moyenne">
+
+        </div>
+        <div id="avis">
+            {% for note in product.notes %}
+                <div class="note">
+                    <p>{{ note.note }} / 5</p>
+                    <div>
+                        <p class="user">{% if note.user %} {{ note.user.firstName }}{% else %}Anonyme{% endif %}</p>
+                        <p>{{ note.content }}</p>
+                    </div>
+                </div>
+            {% else %}
+            <p>Aucune notes</p>
+            {%  endfor%}
+        </div>
+    </section>
+
+
+{% endblock %}

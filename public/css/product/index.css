@@ -1,0 +1,27 @@
+main{
+    padding: 100px 20%;
+}
+
+#produits{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    padding: 20px;
+}
+
+.produit{
+    background-color: #fff;
+    width: 200px;
+}
+
+.produit .image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+

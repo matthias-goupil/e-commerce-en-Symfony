@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset("css/cart/show.css") }}">{% endblock %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% set total = 0 %}
+{% block body %}
+
+    <nav id="side-bar">
+        <ul>
+            <li><a class="" href="{{ path("app_user_show",{
+                    id: user.id
+                }) }}"><img alt="" src="{{ asset("img/icons/user.svg") }}"> Mon compte</a></li>
+            <li><a class="active" href="{{ path("app_cart_show",{
+                    id: user.id
+                }) }}"><img alt="" src="{{ asset("img/icons/cartWhite.svg") }}"> Mon panier</a></li>
+            <li><a class="" href="#"><img alt="" src="{{ asset("img/icons/box.svg") }}"> Mes commandes</a></li>
+            <li><a class="" href="{{ path("app_logout") }}"><img alt="" src="{{ asset("img/icons/logout.svg") }}"> Déconnexion</a></li>
+        </ul>
+    </nav>
+    <section id="main-content">
+        <h2 class="title">Mon panier</h2>
+        <div id="carts">
+            {% for cart in carts %}
+            {% set total = total + cart.product.price %}
+                <div class="cart">
+                    <div class="image">
+                        <img src="{{ asset(cart.product.image) }}" alt="image du produit">
+                    </div>
+                    <div class="description">
+                        <p class="nom-produit">{{ cart.product.name }}</p>
+
+                        <a href="{{ path("app_product_show",{
+                            id: cart.product.id
+                        }) }}">Voir le produit</a>
+                    </div>
+
+                    <div class="quantite">
+                        {% if cart.product.stock > 0 %}
+                            {{ render(controller("App\\Controller\\CartController::edit",{
+                                idCart: cart.id
+                            })) }}
+
+                            {% else %}
+                            <p>Le produit n'est actuellement plus en stock</p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            {% else %}
+                <p>Aucun produit dans votre panier</p>
+            {% endfor %}
+        </div>
+        <div>
+            <p>Prix total : {{ total }} €</p>
+            <a class="btn" href="#">Commander</a>
+
+        </div>
+    </section>
+
+    {#    <a href="{{ path('app_user_index') }}">back to list</a>#}
+
+    {#    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>#}
+
+{% endblock %}
